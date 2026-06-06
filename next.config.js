@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: '/prisca22-website',
 }
 
 module.exports = nextConfig

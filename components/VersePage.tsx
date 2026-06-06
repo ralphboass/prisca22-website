@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play, Pause } from 'lucide-react'
 import Image from 'next/image'
+import { getAssetPath } from '@/lib/utils'
 
 interface VersePageProps {
   onNext: () => void
@@ -90,7 +91,7 @@ export default function VersePage({ onNext }: VersePageProps) {
         audioRef.current.pause()
         audioRef.current = null
       }
-      audioRef.current = new Audio('/audio/song1.mp3')
+      audioRef.current = new Audio(getAssetPath('/audio/song1.mp3'))
       audioRef.current.onended = () => setIsPlaying(false)
       audioRef.current.play().catch(e => console.log('Playback error:', e))
       setIsPlaying(true)
@@ -106,7 +107,7 @@ export default function VersePage({ onNext }: VersePageProps) {
         audioRef2.current.pause()
         audioRef2.current = null
       }
-      audioRef2.current = new Audio('/audio/voice_memo.m4a')
+      audioRef2.current = new Audio(getAssetPath('/audio/voice_memo.m4a'))
       audioRef2.current.onended = () => setIsPlaying2(false)
       audioRef2.current.play().catch(e => console.log('Playback error:', e))
       setIsPlaying2(true)
@@ -136,7 +137,7 @@ export default function VersePage({ onNext }: VersePageProps) {
           >
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/images/start.JPG"
+                src={getAssetPath('/images/start.JPG')}
                 alt="Special memory"
                 className="w-full h-full object-cover"
               />
@@ -232,7 +233,7 @@ export default function VersePage({ onNext }: VersePageProps) {
           >
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/images/IMG_0942.JPG"
+                src={getAssetPath('/images/IMG_0942.JPG')}
                 alt="Special memory"
                 className="w-full h-full object-cover"
               />
@@ -303,12 +304,12 @@ export default function VersePage({ onNext }: VersePageProps) {
                       style={{ height: size.h }}
                     >
                       <img
-                        src={`/images/${imageName}.JPG`}
+                        src={getAssetPath(`/images/${imageName}.JPG`)}
                         alt={`Memory ${imageName}`}
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement
-                          target.src = `/images/${imageName}.jpg`
+                          target.src = getAssetPath(`/images/${imageName}.jpg`)
                         }}
                       />
                     </motion.div>
@@ -329,12 +330,12 @@ export default function VersePage({ onNext }: VersePageProps) {
                       style={{ height: size.h }}
                     >
                       <img
-                        src={`/images/${imageName}.JPG`}
+                        src={getAssetPath(`/images/${imageName}.JPG`)}
                         alt={`Memory ${imageName}`}
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement
-                          target.src = `/images/${imageName}.jpg`
+                          target.src = getAssetPath(`/images/${imageName}.jpg`)
                         }}
                       />
                     </motion.div>
@@ -360,12 +361,12 @@ export default function VersePage({ onNext }: VersePageProps) {
             <motion.img
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
-              src={`/images/${selectedImage}.JPG`}
+              src={getAssetPath(`/images/${selectedImage}.JPG`)}
               alt="Selected memory"
               className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
               onError={(e) => {
                 const target = e.target as HTMLImageElement
-                target.src = `/images/${selectedImage}.jpg`
+                target.src = getAssetPath(`/images/${selectedImage}.jpg`)
               }}
             />
           </motion.div>
