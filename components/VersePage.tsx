@@ -11,10 +11,15 @@ interface VersePageProps {
 }
 
 const imageNames = [
+  '1aabd',
   '30fc7160-7aa6-4a6c-8add-f003ffec8a59 2',
   '3a090343-ef1a-469c-91c3-3adf3168bfe4',
   '7c510883-e176-4836-98a2-ff09fdc864b6',
+  'c1af030a-84ec-4318-b256-e552261bfa84',
+  'c6966d2f-bbcc-4c29-a837-b9734e85acfa',
+  'f3649d05-ef61-4db6-880f-f553d39bf4de',
   'IMG_0030 2',
+  'IMG_0047',
   'IMG_0519',
   'IMG_0780',
   'IMG_0936',
@@ -30,10 +35,7 @@ const imageNames = [
   'IMG_7429',
   'IMG_8199',
   'IMG_8514',
-  'IMG_9094',
-  'c1af030a-84ec-4318-b256-e552261bfa84',
-  'c6966d2f-bbcc-4c29-a837-b9734e85acfa',
-  'f3649d05-ef61-4db6-880f-f553d39bf4de'
+  'IMG_9094'
 ]
 
 const imageSizes = [
@@ -64,20 +66,14 @@ const imageSizes = [
 
 export default function VersePage({ onNext }: VersePageProps) {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isPlaying2, setIsPlaying2] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  const audioRef2 = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     return () => {
       if (audioRef.current) {
         audioRef.current.pause()
         audioRef.current = null
-      }
-      if (audioRef2.current) {
-        audioRef2.current.pause()
-        audioRef2.current = null
       }
     }
   }, [])
@@ -91,26 +87,10 @@ export default function VersePage({ onNext }: VersePageProps) {
         audioRef.current.pause()
         audioRef.current = null
       }
-      audioRef.current = new Audio(getAssetPath('/audio/song1.mp3'))
+      audioRef.current = new Audio(getAssetPath('/audio/morgenlied.mp3'))
       audioRef.current.onended = () => setIsPlaying(false)
       audioRef.current.play().catch(e => console.log('Playback error:', e))
       setIsPlaying(true)
-    }
-  }
-
-  const handlePlayPause2 = () => {
-    if (isPlaying2) {
-      audioRef2.current?.pause()
-      setIsPlaying2(false)
-    } else {
-      if (audioRef2.current) {
-        audioRef2.current.pause()
-        audioRef2.current = null
-      }
-      audioRef2.current = new Audio(getAssetPath('/audio/voice_memo.m4a'))
-      audioRef2.current.onended = () => setIsPlaying2(false)
-      audioRef2.current.play().catch(e => console.log('Playback error:', e))
-      setIsPlaying2(true)
     }
   }
 
@@ -182,7 +162,7 @@ export default function VersePage({ onNext }: VersePageProps) {
               </div>
               
               <div className="text-left">
-                <p className="text-white text-lg font-semibold">Birthday Song</p>
+                <p className="text-white text-lg font-semibold">Morgenlied</p>
                 <p className="text-white/80 text-sm">Tap to {isPlaying ? 'pause' : 'play'}</p>
               </div>
 
@@ -222,61 +202,6 @@ export default function VersePage({ onNext }: VersePageProps) {
             <blockquote className="text-2xl md:text-3xl font-serif text-gray-800 leading-relaxed italic px-4">
               „Ich vermag alles durch den, der mich stark macht, Christus"
             </blockquote>
-          </motion.div>
-
-          {/* Second Image and Music Section */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
-            className="w-full space-y-8"
-          >
-            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src={getAssetPath('/images/IMG_0942.JPG')}
-                alt="Special memory"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="flex justify-center">
-              <button
-                onClick={handlePlayPause2}
-                className="group relative flex items-center gap-6 px-8 py-6 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-              >
-                <div className="flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full">
-                  {isPlaying2 ? (
-                    <Pause className="w-8 h-8 text-white" />
-                  ) : (
-                    <Play className="w-8 h-8 text-white ml-1" />
-                  )}
-                </div>
-                
-                <div className="text-left">
-                  <p className="text-white text-lg font-semibold">Sprachnachricht</p>
-                  <p className="text-white/80 text-sm">Tap to {isPlaying2 ? 'pause' : 'play'}</p>
-                </div>
-
-                {isPlaying2 && (
-                  <div className="flex gap-1 items-end h-8 ml-4">
-                    {[0, 1, 2, 3].map((i) => (
-                      <motion.div
-                        key={i}
-                        animate={{
-                          height: ['12px', '32px', '12px']
-                        }}
-                        transition={{
-                          duration: 0.6,
-                          repeat: Infinity,
-                          delay: i * 0.15
-                        }}
-                        className="w-1.5 bg-white rounded-full"
-                      />
-                    ))}
-                  </div>
-                )}
-              </button>
-            </div>
           </motion.div>
 
           {/* Image Wall Section */}
