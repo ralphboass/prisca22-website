@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .gradient-pink-purple {
+    background: linear-gradient(135deg, #ff66b3 0%, #9966ff 50%, #4d99ff 100%);
+  }
+  
+  .gradient-orange-pink {
+    background: linear-gradient(135deg, #ff9966 0%, #ff6699 50%, #e64dcc 100%);
+  }
+  
+  .gradient-blue-purple {
+    background: linear-gradient(135deg, #66b3ff 0%, #8080ff 50%, #b366e6 100%);
+  }
+  
+  .gradient-yellow-pink {
+    background: linear-gradient(135deg, #ffcc66 0%, #ff8099 50%, #e666b3 100%);
+  }
+}
