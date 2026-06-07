@@ -187,11 +187,32 @@ export default function VersePage({ onNext }: VersePageProps) {
             </button>
           </motion.div>
 
-          {/* Second Verse - Philipper 4:13 */}
+          {/* Gift Card Section */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
+            className="w-full"
+          >
+            <div className="relative bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 rounded-3xl p-12 shadow-2xl border-2 border-amber-200">
+              <div className="absolute top-6 right-6 text-6xl">🎁</div>
+              <div className="text-center space-y-6">
+                <h3 className="text-4xl md:text-5xl font-bold text-amber-900">
+                  Gutschein
+                </h3>
+                <div className="h-1 w-32 bg-gradient-to-r from-amber-400 to-orange-400 mx-auto rounded-full"></div>
+                <p className="text-2xl md:text-3xl font-semibold text-amber-800">
+                  Für Motorradsachen 🏍️
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Second Verse - Philipper 4:13 */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
             className="text-center space-y-4"
           >
             <div className="inline-block px-6 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full">
@@ -268,6 +289,21 @@ export default function VersePage({ onNext }: VersePageProps) {
                 })}
               </div>
             </div>
+          </motion.div>
+
+          {/* Latin Saying Section */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+            className="text-center space-y-4 pt-8"
+          >
+            <blockquote className="text-2xl md:text-3xl font-serif text-gray-800 leading-relaxed italic px-4">
+              "Vivere militare est, sed spes vincere dat."
+            </blockquote>
+            <p className="text-lg text-gray-600 mt-4 pb-12">
+              Leben heißt kämpfen, aber Hoffnung gibt den Sieg.
+            </p>
           </motion.div>
 
         </div>
